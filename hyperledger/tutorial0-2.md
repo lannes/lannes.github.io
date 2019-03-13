@@ -1,18 +1,4 @@
-﻿
-## **1. Kiến trúc Hyperledger**
-
-
-Kiến trúc giao dịch mới execute-order-validate
-
-* **execute**: thực hiện một giao dịch và kiểm tra tính đúng đắn của nó
-* **order**: yêu cầu giao dịch qua giao thức đồng thuận (có thể thay đổi giao thức)
-* **validate**: xác thực các giao dịch trước khi đưa vào sổ cái
-
-
-Trong Fabric, chính sách chứng thực dành riêng cho ứng dụng chỉ định các nút ngang hàng nào, bao nhiêu trong số chúng, cần phải chứng minh cho việc thực hiện đúng hợp đồng thông minh nhất định. Do đó, mỗi giao dịch chỉ cần được thực hiện (xác nhận) bởi tập hợp con của các nút ngang hàng cần thiết để đáp ứng chính sách chứng thực của giao dịch. Điều này cho phép thực hiện song song tăng hiệu suất và quy mô tổng thể của hệ thống.
-
-
-## **2. Sử dụng Hyperledger Composer để triển khai Smartcontract trên Hyperledger Fabric**
+# **Hyperledger Composer**
 
 Hyperledger Composer là một bộ công cụ phát triển và framework mở rộng để phát triển các ứng dụng blockchain dễ dàng hơn. Mục đích chính là tăng tốc thời gian và giúp tích hợp các ứng dụng blockchain với các hệ thống kinh doanh hiện tại dễ dàng hơn. Có thể sử dụng Composer để nhanh chóng phát triển các use case và triển khai giải pháp blockchain trong vài tuần thay vì vài tháng. Composer cho phép mô hình hoá mạng kinh doanh và tích hợp các hệ thống đã có và dữ liệu với các ứng dụng blockchain.
 
@@ -24,4 +10,8 @@ Có thể sử dụng Hyperledger Composer để mô hình hoá nhanh chóng m�
 
 ![](./images/composer-diagram.svg)
 
+## **Kiến trúc giải pháp Hyperledger Composer điển hình**
 
+Hyperledger Composer cho phép các kiến trúc và nhà phát triển nhanh chóng tạo ra các giải pháp blockchain "full-stack". Phát triển logic kinh doanh chạy trên blockchain, API REST hiển thị logic blockchain cho các ứng dụng web hoặc di động, cũng như tích hợp blockchain với các hệ thống hồ sơ doanh nghiệp hiện có.
+
+![](./images/ComposerArchitecture.svg)
