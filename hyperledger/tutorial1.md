@@ -1,6 +1,6 @@
 ﻿
 
-# **Cài đặt trên MAC OS**
+# **Cài đặt môi trường và ứng dụng**
 
 ## **1. Cài đặt Hyperledger Fabric**
 
