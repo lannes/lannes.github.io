@@ -9,5 +9,8 @@
 * Python: 2.7.x
 * Trình soạn thảo code (khuyến nghị dùng VSCode).
 
+# **Hướng dẫn cài đặt**
 
-[Cài đặt trên Windows 10](./tutorial1-2)
+[1. Cài đặt trên Windows 10](./tutorial1-2)
+
+[2. Cài đặt trên Mac](./tutorial1-3)
