@@ -5,7 +5,6 @@
 * [2. Install NodeJS](#2-Install-NodeJS)
 * [3. Install Docker](#3-Install-Docker)
 * [4. Install VSCode](#4-Install-VSCode)
-* [5. Reference](#5-Reference)
 
 ## **1. Install nvm**
 
@@ -43,7 +42,4 @@ Chạy VSCode và nhấn nút “Extensions” trên toolbar dọc bên trái.
 
 Gõ composer trong search bar và sau đó nhấn nút Install chuyển đến Hyperleger Composer extension. Sau khi cài đặt hoàn tất bạn cần nhấn nút Reload để kích hoạt extension.
 
-## **5. Reference*
-
-https://hyperledger.github.io/composer/v0.19/index.html
 
