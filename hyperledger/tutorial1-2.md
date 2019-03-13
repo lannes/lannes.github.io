@@ -1,6 +1,19 @@
 # **Cài đặt trên Windows 10**
 
-## **1. Cài đặt Ubuntu**
+# **MỤC LỤC**
+* [1. Install Ubuntu](#1-Install-Ubuntu)
+* [2. Install Docker CE](#2-Install-Docker-CE)
+    * [2.1. Setting Docker CE](#21-Setting-Docker-CE)
+    * [2.1. Install Docker Compose](#21-Install-Docker-Compose)
+* [3. Install support tools](#3-Install-support-tools)
+    * [3.1. Install Go](#31-Install-Go)
+    * [3.2. Install NodeJs](#32-Install-NodeJs)
+    * [3.3. Check version python](#33-Check-version-python)
+* [4. Mount drive](#4-Mount-drive)
+    * [4.1. Share drive](#41-Share-drive)
+    * [4.2. Mount drive](#42-Mount-drive)
+
+## **1. Install Ubuntu**
 
 1. Enable Hyper-V
 
@@ -14,9 +27,11 @@
 
     Vào Windows Store tìm Ubuntu và cài đặt
 
-## **2. Cài đặt Docker CE**
+## **2. Install Docker CE**
 
-### **2.1. Kết nối Docker CE trên Windows 10 với Ubuntu**
+### **2.1. Setting Docker CE**
+
+Kết nối Docker CE trên Windows 10 với Ubuntu
 
 * Mở cổng 2375 cho daemon
 
@@ -29,15 +44,17 @@ echo "export DOCKER_HOST='tcp://0.0.0.0:2375'" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-### **2.3. Cài docker compose trên Ubuntu**
+### **2.3. Install docker compose**
+
+Cài đặt docker compose trên Ubuntu bằng lệnh
 
 ```sh
 sudo apt install docker-compose
 ``` 
 
-## **3. Cài đặt thư viện**
+## **3. Install support tools**
 
-### **3.1. Cài go**
+### **3.1. Install Go**
 
 ```sh
 wget https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz
@@ -46,7 +63,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 ```
 
-### **3.2. Cài NodeJs 8.9**
+### **3.2. Install NodeJs**
 
 Phiên bản Node.js 9.x chưa được hỗ trợ.
 
@@ -65,19 +82,23 @@ Kiểm tra phiên bản npm 5.6.0
 npm --version 
 ```
 
-### **3.3. Kiểm tra phiên bản python 2.7**
+### **3.3. Check version python**
+
+Kiểm tra phiên bản đã cài có phải 2.7.x không
 
 ```sh
 python --version
 ```
 
-## **4. Mount ổ**
+## **4. Mount drive**
 
-### **4.1. Share ổ**
+Ví dụ ổ sử dụng chung giữa Windows và Ubuntu là ổ E
+
+### **4.1. Share drive**
 
 Share ổ giữa Windows và Ubuntu, cho phép Ubuntu dùng ổ e của Windows
 
-### **4.2. Mount ổ**
+### **4.2. Mount drive**
 
 ```sh
 sudo mkdir /e

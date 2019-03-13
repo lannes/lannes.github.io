@@ -1,10 +1,25 @@
-﻿
+
 
 # **Cài đặt môi trường và ứng dụng**
 
-## **1. Cài đặt Hyperledger Fabric**
+# **MỤC LỤC**
+* [1. Install Hyperledger Fabric](#1-Install-Hyperledger-Fabric)
+   * [1.1. Download scripts](#11-Download-scripts)
+   * [1.2. Install Hyperledger Fabric 1.1](#12-Install-Hyperledger-Fabric-1.1)
+* [2. Install support tools](#2-Install-support-tools)
+* [3. Start Fabric](#3-Start-Fabric)
+* [4. Deploy Business Network](#4-Deploy-Business-Network)
+   * [4.1. Create a Business Network](#41-Create-a-Business-Network)
+   * [4.2. Create a Business Network Definition Archive](#42-Create-a-Business-Network-Definition-Archive)
+   * [4.3. Install a Business Network](#43-Install-a-Business-Network)
+   * [4.4. Start a Business Network](#44-Start-a-Business-Network)
+   * [4.5. Import a Business Network Card](#45-Import-a-Business-Network-Card)
+* [5. Create REST server](#5-Create-REST-server)
+* [6. Create a application](#6-Create-a-application)
 
-### **1.1. Tải script**
+## **1. Install Hyperledger Fabric**
+
+### **1.1. Download scripts**
 
  ```sh
 mkdir ~/fabric-dev-servers && cd ~/fabric-dev-servers
@@ -13,7 +28,7 @@ curl -O https://raw.githubusercontent.com/hyperledger/composer-tools/master/pack
 tar -xvf fabric-dev-servers.tar.gz
 ```
 
-### **1.2. Cài đặt phiên bản Hyperledger Fabric 1.1**
+### **1.2. Install Hyperledger Fabric 1.1**
 
 ```sh
 cd ~/fabric-dev-servers
@@ -21,7 +36,7 @@ export FABRIC_VERSION=hlfv11
 ./downloadFabric.sh
 ```
 
-### **1.3. Kiểm tra các image của Hyperledger Fabric 1.1**
+Kiểm tra các images đã tải về
 
 ```sh
 docker images
@@ -34,7 +49,7 @@ hyperledger/fabric-ccenv     x86_64-1.1.0        c8b4909d8d46        12 months a
 hyperledger/fabric-couchdb   x86_64-0.4.6        7e73c828fc5b        12 months ago       1.56GB
 ```
 
-## **2. Cài đặt công cụ hỗ trợ phát triển ứng dụng**
+## **2. Install support tools**
 
 ```sh
 npm install -g yo@2.0.5
@@ -45,7 +60,7 @@ npm install -g composer-cli@0.19
 
 npm install -g composer-rest-server@0.19
 ```
-## **3. Chuẩn bị trước khi chạy**
+## **3. Start Fabric**
 
 Khi bắt đầu một bản thực thi, cần chạy script khởi động, tạo ra một thẻ PeerAdmin:
 
@@ -70,9 +85,9 @@ Creating peer0.org1.example.com ... done
 sleeping for 15 seconds to wait for fabric to complete start up
 ```
 
-## **4. Triển khai Business Network**
+## **4. Deploy Business Networks**
 
-### **4.1. Tạo Business Network**
+### **4.1. Create a Business Network**
 
 ```sh
 yo hyperledger-composer
@@ -102,7 +117,7 @@ Welcome to the business network generator
    create lib/logic.js
 ```
 
-### **4.2. Tạo Business Network Definition Archive** 
+### **4.2. Create a Business Network Definition Archive** 
 
 Chạy lệnh
 ```sh
@@ -131,7 +146,7 @@ Written Business Network Definition Archive file to
 Command succeeded
 ```
 
-### **4.3. Cài đặt Business Network**
+### **4.3. Install a Business Network**
 
 ```sh
 composer network install --card PeerAdmin@hlfv1 --archiveFile mynetwork@0.0.1.bna
@@ -153,7 +168,7 @@ Command succeeded
    ./startFabric.sh
    ```
 
-### **4.4. Chạy Business Network**
+### **4.4. Start a Business Network**
 
 ```sh
 composer network start --networkName mynetwork --networkVersion 0.0.1 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card
@@ -238,7 +253,7 @@ Lệnh trên đồng thời tạo ra file networkadmin.card  là 1 file business
 }
 ```
 
-### **4.5. Nhập Business Network Card**
+### **4.5. Import a Business Network Card**
 
 ```sh
 composer card import --file networkadmin.card
@@ -272,7 +287,7 @@ The connection to the network was successfully tested: mynetwork
 Command succeeded
 ```
 
-## **5. Tạo REST server**
+## **5. Create REST server**
 
 ```sh
 composer-rest-server
@@ -304,7 +319,7 @@ Web server listening at: http://localhost:3000
 Browse your REST API at http://localhost:3000/explorer
 ```
 
-## **6. Tạo ứng dụng**
+## **6. Create a application**
 
 ```sh
 yo hyperledger-composer:angular
