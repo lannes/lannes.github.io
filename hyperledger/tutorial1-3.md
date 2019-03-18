@@ -26,17 +26,17 @@ node --version
 
 ## **3. Install Docker**
 
-Làm theo hướng dẫn ở đây để cài đặt Docker cho Mac (bản ổn định): https://docs.docker.com/docker-for-mac/install/
+Làm theo hướng dẫn ở đây để cài đặt Docker cho Mac (bản ổn định): [https://docs.docker.com/docker-for-mac/install](https://docs.docker.com/docker-for-mac/install)
 
 Sau khi chạy ứng dụng Docker đã cài đặt bạn sẽ có biểu tượng cá voi trong thanh menu của mình, với trạng thái “Docker is running” màu xanh.
 
 ## **4. Install VSCode**
 
-Truy cập trang: https://code.visualstudio.com
+Truy cập trang: [https://code.visualstudio.com](https://code.visualstudio.com)
 
 Nhấn nút “Download for Mac” và copy ứng dụng đã tải vào thư mục Applications.
 
-## **4.1. Cài Hyperledger Composer Extension cho VSCode**
+### **4.1. Cài Hyperledger Composer Extension cho VSCode**
 
 Chạy VSCode và nhấn nút “Extensions” trên toolbar dọc bên trái.
 

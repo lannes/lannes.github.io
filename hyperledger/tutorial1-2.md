@@ -2,13 +2,12 @@
 
 # **MỤC LỤC**
 * [1. Install Ubuntu](#1-Install-Ubuntu)
-* [2. Install Docker CE](#2-Install-Docker-CE)
-    * [2.1. Setting Docker CE](#21-Setting-Docker-CE)
+* [2. Install Docker](#2-Install-Docker)
+    * [2.1. Setting Docker](#21-Setting-Docker)
     * [2.1. Install Docker Compose](#21-Install-Docker-Compose)
 * [3. Install support tools](#3-Install-support-tools)
     * [3.1. Install Go](#31-Install-Go)
     * [3.2. Install NodeJs](#32-Install-NodeJs)
-    * [3.3. Check version python](#33-Check-version-python)
 * [4. Mount drive](#4-Mount-drive)
     * [4.1. Share drive](#41-Share-drive)
     * [4.2. Mount drive](#42-Mount-drive)
@@ -27,9 +26,13 @@
 
     Vào Windows Store tìm Ubuntu và cài đặt
 
-## **2. Install Docker CE**
+## **2. Install Docker**
 
-### **2.1. Setting Docker CE**
+Làm theo hướng dẫn ở đây để cài đặt Docker cho Windows: [https://docs.docker.com/docker-for-windows/install](https://docs.docker.com/docker-for-windows/install)
+
+Sau khi chạy ứng dụng Docker đã cài đặt bạn sẽ có biểu tượng cá voi trong thanh menu của mình, với trạng thái “Docker is running” màu xanh.
+
+### **2.1. Setting Docker**
 
 Kết nối Docker CE trên Windows 10 với Ubuntu
 
@@ -80,14 +83,6 @@ Kiểm tra phiên bản npm 5.6.0
 
 ```sh
 npm --version 
-```
-
-### **3.3. Check version python**
-
-Kiểm tra phiên bản đã cài có phải 2.7.x không
-
-```sh
-python --version
 ```
 
 ## **4. Mount drive**
