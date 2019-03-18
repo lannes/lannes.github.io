@@ -10,5 +10,5 @@
 * [1.4. Cài đặt môi trường và ứng dụng](./hyperledger/tutorial2)
 * [1.5. Cập nhật và kiểm thử Smart Contract](./hyperledger/tutorial3-1)
 * [1.6. Lịch sử giao dịch](./hyperledger/tutorial3-2)
-* [1.7. Chạy lại Business Network](./hyperledger/tutorial4)
+* [1.7. Một số vấn đề trong thực hành](./hyperledger/tutorial4)
 
