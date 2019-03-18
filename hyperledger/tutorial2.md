@@ -5,7 +5,7 @@
 # **MỤC LỤC**
 * [1. Install Hyperledger Fabric](#1-Install-Hyperledger-Fabric)
    * [1.1. Download scripts](#11-Download-scripts)
-   * [1.2. Install Hyperledger Fabric 1.1](#12-Install-Hyperledger-Fabric-1.1)
+   * [1.2. Install Hyperledger Fabric](#12-Install-Hyperledger-Fabric)
 * [2. Install support tools](#2-Install-support-tools)
 * [3. Start Fabric](#3-Start-Fabric)
 * [4. Deploy Business Network](#4-Deploy-Business-Network)
@@ -22,18 +22,26 @@
 
 ### **1.1. Download scripts**
 
- ```sh
+```sh
+# Tạo và di chuyển đến thư mục fabric-dev-servers
 mkdir ~/fabric-dev-servers && cd ~/fabric-dev-servers
 
+# Tải script
 curl -O https://raw.githubusercontent.com/hyperledger/composer-tools/master/packages/fabric-dev-servers/fabric-dev-servers.tar.gz
+
+# Giải nén
 tar -xvf fabric-dev-servers.tar.gz
 ```
 
-### **1.2. Install Hyperledger Fabric 1.1**
+### **1.2. Install Hyperledger Fabric**
+
+Chọn phiên bản 1.1
 
 ```sh
-cd ~/fabric-dev-servers
+# Chỉ định phiên bản FABRIC
 export FABRIC_VERSION=hlfv11
+
+# Chạy script download image
 ./downloadFabric.sh
 ```
 
@@ -53,24 +61,28 @@ hyperledger/fabric-couchdb   x86_64-0.4.6        7e73c828fc5b        12 months a
 ## **2. Install support tools**
 
 ```sh
+# 1. Công cụ sinh Business Network
 npm install -g yo@2.0.5
 
 npm install -g generator-hyperledger-composer@0.19
 
+# 2. Công cụ triển khai Business Network
 npm install -g composer-cli@0.19
 
+# 3. Công cụ sinh server API
 npm install -g composer-rest-server@0.19
 ```
+
 ## **3. Start Fabric**
 
 Khi bắt đầu một bản thực thi, cần chạy script khởi động, tạo ra một thẻ PeerAdmin:
 
 ```sh
-cd ~/fabric-dev-servers
-export FABRIC_VERSION=hlfv11
 ./startFabric.sh
 ./createPeerAdminCard.sh
 ```
+
+Kết quả chạy
 
 ```sh
 Development only script for Hyperledger Fabric control
@@ -94,7 +106,7 @@ sleeping for 15 seconds to wait for fabric to complete start up
 yo hyperledger-composer
 ```
 
-chọn Business Network
+Chọn các thông số như sau
 
 ```sh
 ? Please select the type of project: Business Network
@@ -107,23 +119,30 @@ Welcome to the business network generator
 ? License: Apache-2.0
 ? Namespace: org.example.mynetwork
 ? Do you want to generate an empty template network? No: generate a populated sample network
-   create package.json
-   create README.md
-   create models/org.example.mynetwork.cto
-   create permissions.acl
-   create .eslintrc.yml
-   create features/sample.feature
-   create features/support/index.js
-   create test/logic.js
-   create lib/logic.js
+```
+
+Thư mục mynetwork được tạo ra chứa các file của dự án
+
+```sh
+create package.json
+create README.md
+create models/org.example.mynetwork.cto
+create permissions.acl
+create .eslintrc.yml
+create features/sample.feature
+create features/support/index.js
+create test/logic.js
+create lib/logic.js
 ```
 
 ### **4.2. Create a Business Network Definition Archive** 
 
 Chạy lệnh
 ```sh
+# Chuyển đến thư mục mynetwork
 cd mynetwork
 
+# Tạo Business Network
 composer archive create -t dir -n .
 ```
 
@@ -162,14 +181,15 @@ Successfully installed business network mynetwork, version 0.0.1
 Command succeeded
 ```
 
-* Nếu chạy bị lỗi `Error trying install business network. Error: No valid responses from any peers.` hoặc lỗi `Error: Error trying install business network. Error: The business network is already installed on all the peers
-` thì chạy lại lệnh 
-
-   ```sh
-   ./startFabric.sh
-   ```
+* Nếu chạy bị lỗi `Error trying install business network. Error: No valid responses from any peers.` hoặc lỗi `Error: Error trying install business network. Error: The business network is already installed on all the peers` thì chạy lại lệnh `./startFabric.sh`
 
 ### **4.4. Start a Business Network**
+
+Chạy Business Network với thông số ặc định của tài khoản admin
+
+networkAdmin: **admin**
+
+networkAdminEnrollSecret: **adminpw**
 
 ```sh
 composer network start --networkName mynetwork --networkVersion 0.0.1 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card
@@ -192,7 +212,7 @@ Command succeeded
 
 Kiểm tra bằng lệnh `docker ps` để thấy các container đang chạy trên docker.
 
-Lệnh trên đồng thời tạo ra file networkadmin.card  là 1 file business network card chứa tất cả các thông tin cần thiết để kết nối  đến blockchain business network. Thẻ này chứa các định danh cho mỗi đối tượng tham gia. Có thể có nhiều thẻ cho một Business Network, trong đó các thẻ thuộc về nhiều đối tượng tham gia.
+Lệnh trên đồng thời tạo ra file **networkadmin.card**  là 1 file business network card chứa tất cả các thông tin cần thiết để kết nối  đến blockchain business network. Thẻ này chứa các định danh cho mỗi đối tượng tham gia. Có thể có nhiều thẻ cho một Business Network, trong đó các thẻ thuộc về nhiều đối tượng tham gia.
 
 ```js
 {
@@ -320,6 +340,8 @@ Web server listening at: http://localhost:3000
 Browse your REST API at http://localhost:3000/explorer
 ```
 
+Kiểm tra API tại địa chỉ http://localhost:3000/explorer
+
 ## **6. Create a application**
 
 ```sh
@@ -347,8 +369,6 @@ Completed generation process
 Chạy ứng dụng
 
 ```sh
-cd mynetwork
-
 npm start
 ```
 
@@ -356,4 +376,4 @@ npm start
 
 ## **7. Reference**
 
-https://hyperledger.github.io/composer/v0.19/index.html
+[Hyperledger Composer v0.19](https://hyperledger.github.io/composer/v0.19/index.html)
