@@ -2,14 +2,14 @@
 
 Nói chung, blockchain là một sổ cái giao dịch bất biến, được duy trì bởi một mạng lưới phân tán các nút ngang hàng. Mỗi nút duy trì một bản sao của sổ cái bằng cách giữ các giao dịch được xác thực bằng giao thức đồng thuận, được nhóm thành các khối bao gồm một mã băm liên kết với khối trước đó. 
 
-Ứng dụng đầu tiên và được công nhận rộng rãi nhất của blockchain là tiền mã hoá Bitcoin. Ethereum là một đồng tiền mã hoá thay thế, đã thực hiện một cách tiếp cận khác, tích hợp nhiều đặc điểm giống Bitcoin nhưng thêm các hợp đồng thông minh để tạo ra một nền tảng cho các ứng dụng phân tán. Bitcoin và Ethereum rơi vào một lớp blockchain được phân loại là công nghệ blockchain không được phép phân quyền. Về cơ bản, đây là mạng public mở cho bất kỳ ai, những người tham gia tương tác ẩn danh.
+Ứng dụng đầu tiên và được công nhận rộng rãi nhất của blockchain là tiền mã hoá Bitcoin. Ethereum là một đồng tiền mã hoá thay thế, đã thực hiện một cách tiếp cận khác, tích hợp nhiều đặc điểm giống Bitcoin nhưng thêm các hợp đồng thông minh để tạo ra một nền tảng cho các ứng dụng phân tán. Bitcoin và Ethereum rơi vào một lớp blockchain được phân loại là công nghệ blockchain không được phép. Về cơ bản, đây là mạng public mở cho bất kỳ ai, những người tham gia tương tác ẩn danh.
 
 Khi sự phổ biến của Bitcoin, Ethereum và một vài công nghệ phái sinh tăng lên, mối quan tâm trong việc áp dụng công nghệ cơ bản của blockchain, sổ cái phân tán và nền tảng ứng dụng phân tán cho doanh nghiệp cũng tăng lên. Tuy nhiên, nhiều trường hợp của doanh nghiệp yêu cầu các đặc tính hiệu suất mà các công nghệ blockchain hiện tại không thể cung cấp. Ngoài ra, trong nhiều trường hợp, danh tính của những người tham gia là vấn đề khó, như trong các giao dịch tài chính, phải tuân thủ các quy định về hiểu rõ khách hàng KYC và phòng chống rửa tiền AML.
 
 Đối với doanh nghiệp, cần xem xét các vấn đề sau:
 
 * Người tham gia phải được xác định/định dạng
-* Mạng cần phải được phép phân quyền
+* Mạng cần phải được phép
 * Hiệu suất giao dịch cao
 * Độ trễ xác nhận giao dịch thấp
 * Quyền riêng tư và bảo mật của các giao dịch và dữ liệu liên quan đến các giao dịch kinh doanh
@@ -91,6 +91,36 @@ Thiết kế này, bắt đầu từ mô hình order-excute trong đó Fabric th
 Trong fabric, chính sách chứng thực dành riêng cho ứng dụng chỉ định các nút ngang hàng nào, hoặc bao nhiêu trong số chúng, cần phải chứng minh cho việc thực hiện đúng hợp đồng thông minh nhất định. Do đó mỗi giao dịch chỉ cần được thực hiện (xác nhận) bởi tập con của các nút ngang hàng cần thiết để đáp ứng chính sách chứng thực của giao dịch. Điều này cho phép thực hiện song song tăng hiệu suất và quy mô tổng thể của hệ thống. Giai đoạn đầu tiên nào cũng loại bỏ bất kỳ sự không xác định nào, vì các kết quả không nhất quán có thể được lọc ra trước khi yêu cầu.
 
 Vì đã loại bỏ tính không xác định, Fabric là công nghệ blockchain đầu tiên cho phép sử dụng các ngôn ngữ lập trình tiêu chuẩn. 
+
+## **Sự riêng tư và bảo mật**
+
+Như đã thảo luận, trong một mạng blockchain công khai, không được phép mà sử dụng PoW cho mô hình đồng thuận, các giao dịch được thực hiện trên mọi nút. Điều này có nghĩa là bản thân các hợp đồng cũng không thể bảo mật dữ liệu giao dịch mà chúng sử lý. Mọi giao dịch và mã thực hiện nó đều hiển thị cho mọi nút trong mạng. Trong trường hợp này, chúng ta đã trao đổi tính bảo mật của hợp đồng và dữ liệu cho sự đồng thuận do PoW cung cấp.
+
+Sự thiếu bảo mật này có thể là vấn đề đối với nhiều nghiệp vụ kinh doanh/doanh nghiệp. Ví dụ: trong một mạng lưới các đối tác trong chuỗi cung ứng, một số người tiêu dùng có thể được ưu tiên như một phương tiện để củng cố mối quan hệ hoặc thúc đẩy doanh số bán hàng bổ sung. Nếu mọi người tham gia có thể thấy mọi hợp đồng và giao dịch, việc duy trì các mối quan hệ kinh doanh đó trong một mạng lưới hoàn toàn minh bạch - mọi người sẽ muốn có mức giá ưu đãi!
+
+Ví dụ thứ hai, hãy xem xét ngành chứng khoán, nơi một người giao dịch nắm giữ một loại chứng khoán (hoặc xử lý) sẽ không muốn các đối thủ của mình biết điều này, nếu không họ sẽ tìm cách tham gia vào trò chơi, làm suy yếu người giao dịch.
+
+Để giải quyết sự thiếu riêng tư và bảo mật cho các mục đích theo yêu cầu của doanh nghiệp, các nền tảng blockchain đã áp dụng nhiều cách tiếp cận khác nhau. Tất cả đều có sự đánh đổi của họ.
+
+Mã hoá dữ liệu là một cách tiếp cận để cung cấp bảo mật; tuy nhiên, trong một mạng không được phép mà sử dụng PoW cho đồng thuận, dữ liệu được mã hoá nằm trên mỗi nút. Nếu đủ thời gian và tài nguyên tính toán, mã hoá có thể bị phá vỡ. Đối với nhiều trường hợp, rủi ro thông tin của doanh nghiệp bị xâm phạm là điều không thể chấp nhận được.
+
+Bằng chứng Zero knowledge (ZKP) là một lĩnh vực nghiên cứu khác đang được khám phá để giải quyết vấn đề này, sự đánh đổi ở đây là, hiện tại, việc tính toán ZKP đòi hỏi thời gian và nguồn lực tính toán đáng kể. Do đó, sự đánh đổi trong trường hợp này là hiệu suất để bảo mật.
+
+Trong ngữ cảnh được phép (permissioned) có thể thúc đẩy các hình thức đồng thuận thay thế, người ta có thể khám phá ra các phương pháp hạn chế phân phối thông tin bí mật dành riêng cho các nút được uỷ quyền.
+
+Hyperledger Fabric, là một nền tảng cho phép, cho phép bảo mật thông qua kiến trúc channel. Về cơ bản, những người tham gia trên mạng Fabric có thể thiết lập một "kênh" giữa các nhóm người tham gia nên được cấp khả năng hiển thị cho một nhóm giao dịch cụ thể. Hãy nghĩ điều này như một lớp phủ mạng. Chỉ những nút tham gia vào kênh mới có quyền truy cập vào hợp đồng thông minh (chaincode) và dữ liệu được giao dịch, giữ sự riêng tư và bảo mật.
+
+Để cải thiện sự riêng tư và khả năng bảo mật của mình, Fabric đã bổ sung hỗ trợ cho dữ liệu riêng tư và đang nghiên cứu các bằng chứng Zero knowledge (ZKP) trong tương lai. 
+
+## **Đồng thuận**
+
+Yêu cầu của các giao dịch được uỷ quyền cho một thành phần mô đun của đồng thuận được tách rời khỏi các nút mạng thực hiện giao dịch và duy trì sổ cái. Cụ thể là dịch vụ yêu cầu. Vì đồng thuận là một mô đun, việc triển khai có thể được điều chỉnh theo giả định tin cậy một triển khai hoặc giải pháp cụ thể. Kiến trúc mô đun này cho phép nền tảng dựa vào các bộ công cụ được thiết lập tốt cho CFT (crash fault-tolerant) BFT (byzantine fault-tolerant) hoặc để thực hiện yêu cầu.
+
+Trong các bản phát hành hiện có (1.0, 1.1), Fabric cung cấp dịch vụ yêu cầu CFT được triển khai với Kafka và Zookeeper. Trong các phiên bản tiếp theo, Fabric sẽ cung cấp dịch vụ yêu cầu đồng thuận Raft được triển khai với etcd/Raft và dịch vụ yêu cầu BFT phi tập trung hoàn toàn.
+
+Lưu ý rằng ở đây không có sự loại trừ lẫn nhau, mạng Fabric có thể có nhiều dịch vụ yêu cầu hỗ trợ các ứng dụng hoặc yêu cầu các ứng dụng khác nhau.
+
+
 
 
 
