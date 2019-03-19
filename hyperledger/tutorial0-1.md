@@ -36,6 +36,74 @@ Sự kết hợp về các tính năng thiết kế khác biệt này làm cho F
 
 ## **Mô đun**
 
+Hyperledger đã được kiến trúc một cách đặc biệt để có một kiến trúc mô đun. Cho dù đó là sự đồng thuận, các giao thức quản lý danh tính như LDAP hoặc OpenID Connect, các giao thức quản lý khoá hoặc thư viện mã hoá, nền tảng đã được thiết kế ở cốt lõi để được cấu hình đáp ứng các yêu cầu sử dụng của doanh nghiệp.
+
+Ở cấp độ cao, Fabric bao gồm các thành phần mô đun sau:
+
+* Một dịch vụ order thiết lập sự đồng thuận về thứ tự giao dịch và gửi các khối đến nút mạng.
+* Một trình cung cấp dịch vụ membership chịu trách nhiệm liên kết các thực thể trong mạng với các danh tính mã hoá.
+* Một dịch vụ gossip peer-to-peer tuỳ chọn để truyền các khối từ dịch vụ order tới các nút mạng khác.
+* Smart contract (chaincode) chạy với môi trường container (ví dụ Docker) để cách ly. Chúng có thể được viết bằng các ngôn ngữ lập trình tiêu chuẩn nhưng không có quyền truy cập trực tiếp vào trạng thái sổ cái.
+* Sổ cái có thể được cấu hình để hỗ trợ nhiều loại DBMS khác nhau.
+* Chứng thực và chính sách xác thực có thể được cấu hình độc lập cho mỗi ứng dụng.
+
+Có một thoả thuận công bằng trong ngành là không "có một blockchain nào thống trị tất cả". Hyperledger có thể được cấu hình theo nhiều cách để đáp ứng các yêu cầu giải pháp đa dạng cho nhiều trường hợp.
+
+## **Permissioned so với Permissionless**
+
+Trong một blockchain không được phép, hầu như ai cũng có thể tham gia và mọi người tham gia đều ẩn danh. Trong bối cảnh như vậy, không thể có sự tin tưởng nào khác ngoài trạng thái của blockchain, trước một độ sâu nhất định là bất biến. Để giảm thiểu sự thiếu tin tưởng này các blockchain không được phép thường sử dụng một loại tiền mã hoá hoặc phí giao dịch để cung cấp động lực kinh tế để bù đắp chi phí bất thường khi tham gia vào một hình thức đồng thuận chịu lỗi byzantine dựa trên bằng chứng về công việc (PoW).
+
+Blockchain được phép, là một mặt khác, vận hành blockchain giữa một nhóm người tham gia đã biết, được định danh và thường được kiểm duyệt theo mô hình quản trị mang lại một mức độ tin cậy nhất định. Một blockchain được phép cung cấp một cách để đảm bảo các tương tác giữa một nhóm các thực thể có một mục tiêu chung nhưng có thể không hoàn toàn tin tưởng lẫn nhau. Bằng cách dựa vào danh tính của những người tham gia, một blockchain được phép có thể sử dụng các giao thức đồng thuận chịu lỗi truyền thống (CFT) hoặc byzantine (BFT) không yêu cầu khai thác tốn kém.
+
+Ngoài ra, trong bối cảnh được phép như vậy, nguy cơ người tham gia cố tình giới thiệu mã độc thông qua hợp đồng thông minh sẽ giảm bớt. Đầu tiên, những người tham gia được biết đến với nhau và tất cả các hành động, cho dù gửi giao dịch ứng dụng, sửa đổi cấu hình của mạng hoặc triển khai hợp đồng thông minh đều được ghi lại trên blockchain theo chính sách chứng thực được thiết lập cho mạng và loại giao dịch có liên quan. Thay vì hoàn toàn ẩn danh, bên phạm tội có thể dễ dàng được xác định và vụ việc được xử lý theo các điều khoản của mô hình quản trị.
+
+## **Smart contract**
+
+Hợp đồng thông minh, hay Fabric gọi là chaincode, có chức năng như một ứng dụng phân tán đáng tin cậy có được sự bảo mật/tin cậy từ blockchain và sự đồng thuận cơ bản giữa các nút. Đó là logic kinh doanh của một ứng dụng blockchain.
+
+Có ba điểm chính áp dụng cho hợp đồng thông minh, đặc biệt là khi áp dụng cho nền tảng:
+
+* Nhiều hợp đồng thông minh chạy đồng thời trong mạng.
+* Chúng có thể được triển khai linh hoạt (trong nhiều trường hợp bởi bất kỳ ai)
+* Mã ứng dụng nên được coi là không đáng tin cậy, thậm chí có thể độc hại.
+
+Hầu hết các nền tảng blockchain có hợp đồng thông minh đều tuân theo kiến trúc **order-execute** trong đó giao thức đồng thuận:
+
+* Xác thực và yêu cầu giao dịch sau đó truyền chúng đến tất cả các nút ngang hàng.
+* Mỗi nút ngang hàng sau đó thực hiện các giao dịch tuần tự.
+
+Kiến trúc order-execute có thể được tìm thấy trong hầu hết các hệ thống blockchain hiện có, từ các nền tảng công khai/không được phép như Ethereum (với sự đồng thuận dựa trên PoW) cho đến các nền tảng được phép như Tendermint, Chain, và Quorum.
+
+Hợp đồng thông minh thực thi trong một blockchain hoạt động với kiến trúc order-execute phải có tính xác định; mặc khác, sự đồng thuận có thể không bao giờ đạt được. Để giải quyết vấn đề không xác định, nhiều nền tảng yêu cầu các hợp đồng thông minh phải được viết bằng ngôn ngữ không chuẩn hoặc theo miền cụ thể (như Solidity) để có thể loại bỏ các hoạt động không xác định. Điều này cản trở việc áp dụng rộng rãi vì nó yêu cầu các nhà phát triển viết hợp đồng thông minh học ngôn ngữ lập trình mới và có thể dẫn đến lỗi lập trình.
+
+Hơn nữa, vì tất cả các giao dịch được thực hiện tuần tự bởi tất cả các nút, hiệu suất và quy mô bị hạn chế. Thực tế là mã hợp đồng thông minh thực thi trên mọi nút trong hệ thống đòi hỏi phải thực hiện các biện pháp phức tạp để bảo vệ hệ thống tổng thể khỏi các hợp đồng độc hại tiềm ẩn nhằm đảm bảo khả năng phục hồi toàn bộ hệ thống.
+
+## **Cách tiếp cận mới**
+
+Fabric giới thiệu một kiến trúc mới cho giao dịch gọi là **excute-order-validate**. Nó giải quyết các thách thức về khả năng phục hồi, tính linh hoạt, khả năng mở rộng, hiệu suất và bảo mật mà mô hình order-execute phải đối mặt bằng cách tách luồng giao dịch thành ba bước:
+
+* execute: thực thi giao dịch và kiểm tra tính đúng đắn của nó, qua đó chứng thực nó
+* order: yêu cầu giao dịch qua giao thức đồng thuận, và
+* validate: xác thực các giao dịch dựa trên chính sách chứng thực dành riêng cho ứng dụng trước khi đưa nó vào sổ cái
+
+Thiết kế này, bắt đầu từ mô hình order-excute trong đó Fabric thực hiện các giao dịch trước khi đạt thoả thuận cuối cùng về yêu cầu của chúng.
+
+Trong fabric, chính sách chứng thực dành riêng cho ứng dụng chỉ định các nút ngang hàng nào, hoặc bao nhiêu trong số chúng, cần phải chứng minh cho việc thực hiện đúng hợp đồng thông minh nhất định. Do đó mỗi giao dịch chỉ cần được thực hiện (xác nhận) bởi tập con của các nút ngang hàng cần thiết để đáp ứng chính sách chứng thực của giao dịch. Điều này cho phép thực hiện song song tăng hiệu suất và quy mô tổng thể của hệ thống. Giai đoạn đầu tiên nào cũng loại bỏ bất kỳ sự không xác định nào, vì các kết quả không nhất quán có thể được lọc ra trước khi yêu cầu.
+
+Vì đã loại bỏ tính không xác định, Fabric là công nghệ blockchain đầu tiên cho phép sử dụng các ngôn ngữ lập trình tiêu chuẩn. 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
