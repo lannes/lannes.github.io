@@ -67,3 +67,23 @@ docker rmi -f 278007ebb461
 docker rmi -f 7fafed2e20de
 ```
 
+## Một số lệnh docker
+
+```sh
+# Kiểm tra các image
+docker images -a
+
+# Kiểm tra các container đang chạy
+docker ps -a
+
+# Stop container
+
+
+# Xoá tất cả các tài nguyên không sử dụng (đang không chạy)
+docker system prune
+
+# Xoá tất cả các volume không sử dụng
+docker system prune --volumes
+
+```
+

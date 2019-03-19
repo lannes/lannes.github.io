@@ -1,82 +1,42 @@
-﻿
-# **1. Giới thiệu Hyperledger Fabric**
+﻿# **Giới thiệu**
+
+Nói chung, blockchain là một sổ cái giao dịch bất biến, được duy trì bởi một mạng lưới phân tán các nút ngang hàng. Mỗi nút duy trì một bản sao của sổ cái bằng cách giữ các giao dịch được xác thực bằng giao thức đồng thuận, được nhóm thành các khối bao gồm một mã băm liên kết với khối trước đó. 
 
-Trong Fabric, chính sách chứng thực dành riêng cho ứng dụng chỉ định các nút ngang hàng nào, bao nhiêu trong số chúng, cần phải chứng minh cho việc thực hiện đúng hợp đồng thông minh nhất định. Do đó, mỗi giao dịch chỉ cần được thực hiện (xác nhận) bởi tập hợp con của các nút ngang hàng cần thiết để đáp ứng chính sách chứng thực của giao dịch. Điều này cho phép thực hiện song song tăng hiệu suất và quy mô tổng thể của hệ thống.
+Ứng dụng đầu tiên và được công nhận rộng rãi nhất của blockchain là tiền mã hoá Bitcoin. Ethereum là một đồng tiền mã hoá thay thế, đã thực hiện một cách tiếp cận khác, tích hợp nhiều đặc điểm giống Bitcoin nhưng thêm các hợp đồng thông minh để tạo ra một nền tảng cho các ứng dụng phân tán. Bitcoin và Ethereum rơi vào một lớp blockchain được phân loại là công nghệ blockchain không được phép phân quyền. Về cơ bản, đây là mạng public mở cho bất kỳ ai, những người tham gia tương tác ẩn danh.
 
-## **1. Nút ngang hàng**
+Khi sự phổ biến của Bitcoin, Ethereum và một vài công nghệ phái sinh tăng lên, mối quan tâm trong việc áp dụng công nghệ cơ bản của blockchain, sổ cái phân tán và nền tảng ứng dụng phân tán cho doanh nghiệp cũng tăng lên. Tuy nhiên, nhiều trường hợp của doanh nghiệp yêu cầu các đặc tính hiệu suất mà các công nghệ blockchain hiện tại không thể cung cấp. Ngoài ra, trong nhiều trường hợp, danh tính của những người tham gia là vấn đề khó, như trong các giao dịch tài chính, phải tuân thủ các quy định về hiểu rõ khách hàng KYC và phòng chống rửa tiền AML.
 
-Mạng blockchain được hình thành từ các nút ngang hàng, mỗi nút có bản sao các sổ cái và các smart contract. 
+Đối với doanh nghiệp, cần xem xét các vấn đề sau:
 
-![](./images/peers.diagram.1.png)
+* Người tham gia phải được xác định/định dạng
+* Mạng cần phải được phép phân quyền
+* Hiệu suất giao dịch cao
+* Độ trễ xác nhận giao dịch thấp
+* Quyền riêng tư và bảo mật của các giao dịch và dữ liệu liên quan đến các giao dịch kinh doanh
 
-Trong ví dụ trên, mạng N được hình thành bởi 3 nút P1, P2 và P3 mỗi nút đều có sổ cái L1 và chaincode S1.
+Trong khi nhiều nền tảng blockchain ban đầu hiện nay đang được điều chỉnh cho doanh nghiệp sử dụng, Hyperledger Fabric đã được thiết kế để sử dụng cho doanh nghiệp ngay từ đầu. Các phần sau mô tả cách Hyperledger Fabric (Fabric) phân biệt nó với các nền tảng blockchain khác và mô tả một số động lực quyết định kiến trúc của nó.
 
-## **2. Sổ cái và chaincode**
+## **Hyperledger Fabric**
 
-Một nút ngang hàng lưu trữ sổ cái và chaincode. Có thể có nhiều sổ cái và chaincode trên mỗi nút.
+Hyperledger Fabric là một nền tảng công nghệ sổ cái phân tán được phân quyền doanh nghiệp mã nguồn mở, được thiết kế sử dụng cho doanh nghiệp, mang lại một số khác biệt chính so với các nền tảng sổ cái phân tán hoặc blockchain phổ biến khác.
 
-![](./images/peers.diagram.3.png)
+Điểm khác biệt chính là Hyperledger được thành lập bởi Linux Foundation, nơi có bề dày lịch sử và rất thành công trong việc nuôi dưỡng các dự án mã nguồn mở dưới sự quản trị mở phát triển cộng đồng bền vững và hệ sinh thái thịnh vượng. Hyperledger được điều hành bởi một ban chỉ đạo kỹ thuật đa dạng, dự án Hyperledger Fabric bởi một nhóm các nhà bảo trì từ nhiều tổ chức.
 
-## **3. Ứng dụng và Nút ngang hàng**
+Fabric có kiến trúc mô đun và cấu hình cao, cho phép đổi mới, linh hoạt và tối ưu hoá cho nhiều trường hợp sử dụng trong công nghiệp bao gồm ngân hàng, tài chính, bảo hiểm, y tế, nguồn nhân lực, chuỗi cung ứng và thậm chí cả âm nhạc kỹ thuật số. 
 
-![](./images/peers.diagram.6.png)
+Fabric là nền tảng sổ cái phân tán đầu tiên hỗ trợ các hợp đồng thông minh được tạo ra bằng các ngôn ngữ lập trình có mục đích chung như Java, Go và Node.js thay vì cá ngôn ngữ dành riêng cho miền bị ràng buộc (DSL). Điều này có nghĩa là hầu hết các doanh nghiệp đã có tập kỹ năng cần thiết để phát triển hợp đồng thông minh và không cần đào tạo thêm để học ngôn ngữ mới hoặc DSL.
 
-Các nút ngang hàng kết hợp với nút Orderer đảm bảo sổ cái được cập nhật trên mọi nút. Trong ví dụ trên:
-* **Bước 1** Ứng dụng A kết nối với P1.
-* **Bước 2** Ứng dụng A gọi chaincode S1 qua P1 để truy vấn hoặc cập nhật sổ cái L1. 
-* **Bước 2.1** P1 gọi S1 để với yêu cầu của A
-* **Bước 2.2** S1 sinh ra truy vấn hoặc cập nhật L1. 
-* **Bước 3** Nếu là truy vấn A nhận được kết quả.
-* **Bước 4** Nếu là cập nhật A tạo ra giao dịch từ kết quả, gửi yêu cầu đến O1.
-* **Bước 4.1** O1 tập hợp các giao dịch thành khối và gửi đến các nút ngang hàng.
-* **Bước 4.2** P1 xác nhận giao dịch trước khi thêm vào L1, sinh ra event cho A nhận.
+Nền tảng Fabric cũng được cho phép, có nghĩa là, không giống như mạng không được phép công khai, những người tham gia được biết đến nhau, thay vì ẩn danh và do đó hoàn toàn không tin cậy. Điều này có nghĩa là trong khi những người tham gia có thể không hoàn toàn tin tưởng lẫn nhau (ví dụ, họ có thể cùng là đối thủ cạnh tranh trong cùng ngành), một mạng có thể được vận hành theo mô hình quản trị được xây dựng dựa trên sự tin cậy tồn tại giữa những người tham gia, chẳng hạn như một thoả thuận pháp lý hoặc khung xử lý tranh chấp.
 
-## **4. Nút ngang hàng và kênh**
+Một trong những điều quan trọng nhất khác biệt của nền tảng là sự hỗ trợ cho các **giao thức đồng thuận có thể cài cắm được**, cho phép nền tảng được tuỳ chỉnh hiệu quả hơn để phù hợp với các trường hợp cụ thể và mô hình tin cậy. Ví dụ, khi được triển khai trong một doanh nghiệp, hoặc được điều hành bởi một cơ quan đáng tin cậy, sự đồng thuận chịu lỗi hoàn toàn của byzantine có thể được coi là không cần thiết và kéo theo hiệu suất và thông lượng quá mức. Trong các tình huống như vậy, giao thức đồng thuận chịu lỗi (CFT) có thể là quá đủ, trong trường hợp sử dụng đa cấp, phi tập trung, giao thức đồng thuận chịu lỗi byzantine (BFT) truyền thống có thể được yêu cầu.
 
-![](./images/peers.diagram.5.png)
+Fabric có thể tận dụng các giao thức đồng thuận mà **không yêu cầu tiền mã hoá riêng** để khuyến khích khai thác tốn kém hoặc thúc đẩy thực hiện hợp đồng thông minh. Việc tránh một loại tiền mã hoá giúp giảm thiểu rủi ro tấn công đáng kể và không có hoạt động khai thác tiền mã hoá có nghĩa là nền tảng có thể được triển khai với chi phí hoạt động gần như bất kỳ hệ thống phân tán nào khác.
 
-Kênh cho phép chỉ định tập các nút và ứng dụng giao tiếp với nhau trong mạng blockchain. Trong ví dụ trên, ứng dụng A giao tiếp với nút P1 trực tiếp và với nút P2 qua kênh C. 
+Sự kết hợp về các tính năng thiết kế khác biệt này làm cho Fabric trở thành một trong những nền tảng tốt hơn hiện nay cả về xử lý giao dịch và độ trễ xác định giao dịch, và nó cho phép bảo mật các giao dịch và hợp đồng thông minh.
 
-## **5. Nút ngang hàng và Tổ chức**
+## **Mô đun**
 
-Các nút ngang hàng trong một mạng với nhiều tổ chức.
 
-![](./images/peers.diagram.8.png)
 
-Trong ví dụ trên có 4 tổ chức với 8 nút mạng tham gia. Kênh C kết nối 5 nút trong mạng N - P1, P3, P5, P7 và P8. Trong một tổ chức sẽ có ít nhất 1 nút tham gia kênh. Các ứng dụng của một tổ chức sẽ kết nối tới các nút của tổ chức khác. Ở đây các nút orderer được bỏ qua để sơ đồ đơn giản hơn.
-
-## **6. Nút ngang hàng và Định danh**
-
-Mọi nút ngang hàng được đăng ký chứng chỉ bởi quản trị viên của tổ chức.
-
-![](./images/peers.diagram.9.png)
-
-Khi một nút kết nối tới kênh, chứng chỉ của nó xác định tổ chức thông qua kênh MSP. Trong ví dụ trên, P1 và P2 được định danh bởi CA1. Kênh C xác định từ chính sách trong cấu hình của mình rằng các định danh từ CA1 phải liên kết với Org1 bởi ORG1.MSP. Tương tự P3 và P4 được ORG2.MSP xác định là 1 phần của Org2
-
-## **7. Nút ngang hàng và nút Orderer**
-
-Nút Orderer là một nút đặc biệt dùng trong cập nhật giao dịch, một nút ngang hàng yêu cầu các nút mạng khác duyệt cập nhật sổ cái trước khi thực sự cập nhật sổ cái cục bộ của các nút. Tiến trình này gọi là *đồng thuận*, các ứng dụng muốn cập nhật sổ cái phải thực hiện 3 bước.
-
-### **7.1. Bước 1: Đề nghị** 
-
-![](./images/peers.diagram.10.png)
-
-Giao dịch đề nghị được thực hiện độc lập bởi các nút ngang hàng nơi phản hồi các đề nghị được chứng thực. Trong ví dụ trên, ứng dụng A1 sinh giao dịch T1 đề nghị P gửi đến cả nút P1 và P2 trên kênh C. P1 thực thi S1 sử dụng giao dịch T1 đề nghị sinh ra giao dịch T1 phản hồi R1 mà nó xác nhận với E1. Một cách độc lập, P2 thực thi S1 sử dụng giao dịch T1 đề nghị P sinh ra giao dịch T1 phản hồi R2 mà nó xác nhận với E2. Ứng dụng A1 nhận cả 2 phản hồi xác thực cho giao dịch T1, tên là E1 và E2.
-
-### **7.2. Bước 2: Đóng gói**
-
-![](./images/peers.diagram.11.png)
-
-Vai trò đầu tiên của nút orderer là đóng gói các yêu cầu cập nhật sổ cái. Trong ví dụ trên, A1 gửi giao dịch T1 xác thực bởi E1 và E2 tới orderer O1. Song song, ứng dụng A2 gửi giao dịch T2 chứng thực bởi E1 tới orderer O1. O1 đóng gói giao dịch T1 từ A1 và T2 từ A2 cùng với các giao dịch từ các ứng dụng khác trong mạng vào block B2. CÓ thể thấy trong B2, các giao dịch yêu cầu là T1, T2, T3, T4, T6, T5.
-
-### **7.3. Bước 3: Xác thực**
-
-![](./images/peers.diagram.12.png)
-
-Vai trò thứ hai của nút orderer là phân phối các khối tới các nút mạng. Trong ví dụ, orderer O1 phân phối khối B2 tới nút P1 và P2. Nút P1 xử lý khối B2, kết quả nằm trong 1 khối mới thêm vào sổ cái L1 trên P1. Song song, nút P2 xử lý khối B2, kết quả nằm trong một khối mới thêm vào sổ cái L1 nằm trên P2. Một khi tiến trình hoàn tất, sổ cái L1 sẽ được nhất quán cập nhật trên P1 và P2, và mỗi nút thông báo tới ứng dụng đã kết nối giao dịch đã được xử lý.
-
-## **8. Oderer và đồng thuận**
-
-Toàn bộ quy trình xử lý giao dịch được gọi là đồng thuận bởi vì tất cả các nút mạng đã đạt được thoả thuận về thứ tự và nội dung của giao dịch, trong một tiến trình có trung gian là orderer. Đồng thuận là một tiến trình bao gồm nhiều bước và các ứng dụng chỉ nhận được thông báo về cập nhật sổ cái khi quá trình hoàn tất - có thể xảy ra ở các thời điểm hơi khác ở các nút khác nhau. 
 
 
