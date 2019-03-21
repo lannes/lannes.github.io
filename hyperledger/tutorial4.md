@@ -78,7 +78,6 @@ docker ps -a
 
 # Stop container
 
-
 # Xoá tất cả các tài nguyên không sử dụng (đang không chạy)
 docker system prune
 

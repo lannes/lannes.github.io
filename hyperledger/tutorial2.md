@@ -1,6 +1,6 @@
 
 
-# **Cài đặt môi trường và ứng dụng**
+# **Cài đặt môi trường và ứng dụng Smart Contract**
 
 # **MỤC LỤC**
 * [1. Install Hyperledger Fabric](#1-Install-Hyperledger-Fabric)

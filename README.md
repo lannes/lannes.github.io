@@ -13,6 +13,9 @@
 * [1.6. Cập nhật và kiểm thử Smart Contract](./hyperledger/tutorial3-1)
 * [1.7. Lịch sử giao dịch](./hyperledger/tutorial3-2)
 * [1.8. Một số vấn đề trong thực hành](./hyperledger/tutorial4)
+* [1.9. Thực hành nâng cao]()
+    * [1.1. Xác thực cho server REST](./hyperledger/tutorial5-1)
+    * [1.2. Chế độ nhiều người dùng cho REST server](./hyperledger/tutorial5-2)
 
 ### **1.2 Ethereum**
 
