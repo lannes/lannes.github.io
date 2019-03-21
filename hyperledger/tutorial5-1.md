@@ -22,10 +22,10 @@ npm install -g passport-github
 3. Click vào **OAuth applications** dưới **Developer settings** bên trái.
 4. Click vào **Register a new application**
 5. Thiết lập các thông số:
-    Application name: Composer
-    Homepage: http://localhost:3000/
-    Application description: OAuth application for Composer
-    Authorization callback URL: http://localhost:3000/auth/github/callback
+    * Application name: Composer
+    * Homepage: http://localhost:3000/
+    * Application description: OAuth application for Composer
+    * Authorization callback URL: http://localhost:3000/auth/github/callback
 6. Click vào **Register application**
 7. Lưu ý các giá trị **Client ID** và **Client Secret**.
 
@@ -54,7 +54,7 @@ composer-rest-server -c admin@mynetwork -a true
 
 Truy cập link để xác thực qua [GitHub](http://localhost:3000/auth/github)
 
-Sau khi xác thực thành công, sẽ chuyển về link [http://localhost:3000/explorer/](http://localhost:3000/explorer/)
+Sau khi xác thực thành công, sẽ chuyển về link callback [http://localhost:3000/explorer/](http://localhost:3000/explorer/)
 
 ### **1.5. Xác thực qua HTTP hoặc REST client**
 

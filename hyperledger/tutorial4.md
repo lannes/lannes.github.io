@@ -67,6 +67,13 @@ docker rmi -f 278007ebb461
 docker rmi -f 7fafed2e20de
 ```
 
+## **Tạo business network card**
+
+```sh
+#composer card create
+composer card create --file alice1@mynetwork.card --businessNetworkName mynetwork --connectionProfileFile connection.json --user alice --enrollSecret 123456
+```
+
 ## Một số lệnh docker
 
 ```sh

@@ -12,4 +12,43 @@ Khi một client đã được xác thực với API REST, client đó có thể
 
 Tính năng này yêu cầu client tin tưởng server REST. Điều này là bắt buộc bởi server REST lưu trữ danh tính và khoá private của client.
 
-## **Bật chế độ nhiều người dùng**
+### **2.1. Bật chế độ nhiều người dùng**
+
+Sử dụng tham số `-m true` để bật chế độ nhiều người dùng. Ví dụ:
+
+```sh
+composer-rest-server -c admin@mynetwork -m true
+```
+
+Tham số `-m true` sẽ tự động bật chế độ xác thực API REST. Nếu muốn tường minh có thể chỉ định cả 2 tham số `-a true -m true`.
+
+Sau khi đăng nhập thực hiện 1 truy vấn sẽ gặp lỗi `A business network card has not been specified`
+
+### **2.2. Thêm business network card vào wallet**
+
+Đầu tiên phải cấp danh tính Blockchain cho người tham gia vào business network. Ví dụ đã cấp danh tính alice1 cho người tham gia org.example.mynetwork.Trader#alice@email.com và đã tạo business network card lưu trữ trong file alice1@mynetwork.card.
+
+Các bước thực hiện
+
+1. Truy cập http://localhost:3000/explorer/, chuyển đến api Wallet tại mục **Wallet**
+2. Kiểm tra wallet không chứa bất kỳ business network card nào bằng cách gọi `GET /Wallet`. Kết quả trông như sau
+    ```
+    []
+    ```
+3. Import business network card vào wallet bằng cách gọi `POST /Wallet/import`. Chọn file alice1@mynetwork.card bằng cách click vào nút **Choose File**. Kết quả trông như sau
+    ```
+    no content
+    ```
+4. Kiểm tra Wallet có chứa alice1@mynetwork không bằng cách gọi `GET /Wallet`. Kết quả trông như sau
+    ```
+    [
+        {
+            "name": "alice1@mynetwork",
+            "default": true
+        }
+    ]
+    ```
+
+
+
+

@@ -71,6 +71,9 @@ npm install -g composer-cli@0.19
 
 # 3. Công cụ sinh server API
 npm install -g composer-rest-server@0.19
+
+# 4. Công cụ quản trị trực quan
+npm install -g composer-playground@0.19
 ```
 
 ## **3. Start Fabric**
@@ -212,9 +215,11 @@ Command succeeded
 
 Kiểm tra bằng lệnh `docker ps` để thấy các container đang chạy trên docker.
 
-Lệnh trên đồng thời tạo ra file **networkadmin.card**  là 1 file business network card chứa tất cả các thông tin cần thiết để kết nối  đến blockchain business network. Thẻ này chứa các định danh cho mỗi đối tượng tham gia. Có thể có nhiều thẻ cho một Business Network, trong đó các thẻ thuộc về nhiều đối tượng tham gia.
+Lệnh trên đồng thời tạo ra file **networkadmin.card**  là 1 file business network card chứa tất cả các thông tin cần thiết để kết nối đến blockchain business network. Thẻ này chứa các định danh cho mỗi đối tượng tham gia. Có thể có nhiều thẻ cho một Business Network, trong đó các thẻ thuộc về nhiều đối tượng tham gia.
 
-```js
+**networkadmin.card** chứa nội dung của file connection profile **connection.json** như sau:
+
+```json
 {
    "name": "hlfv1",
    "x-type": "hlfv1",
