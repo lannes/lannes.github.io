@@ -1,21 +1,22 @@
-# VTC Launcher integrate
+# **VTC Launcher integrate**
 
+## **Version: 0.2**
 ## **Update History**:
 
-| Version   | Update                                                   |
-|----------:|----------------------------------------------------------|
-| **v0.2**  | - Diagram add buy item flow.                             |
-|           | - CLIENT ID of LIVE environment.                         | 
-| **v0.1**  | Initialize document.                                     |
+| Version   | Update                                                   | Date        |
+|----------:|----------------------------------------------------------|-------------|
+| **v0.2**  | - Diagram add buy item flow.                             | 19-07-2019  |
+|           | - CLIENT ID of LIVE environment.                         |             |
+| **v0.1**  | Initialize document.                                     | 17-07-2019  |
 
 ## **Table of contents**
 * [1. Sequence diagram](#1-Sequence-diagram)
 * [2. Shortcut](#2-Shortcut)
 * [3. Call game](#3-Call-game)
 * [4. Get detail VTC's account](#4-Get-detail-VTC's-account)
-	* [4.1. Environment](#4-1-Environment)
-	* [4.2. Get account detail](#4-2-Get-account-detail)
-	* [4.3. Wap payment](#4-3-Wap-payment)
+	* [4.1. Environment](#41-Environment)
+	* [4.2. Get account detail](#42-Get-account-detail)
+	* [4.3. Wap payment](#43-Wap-payment)
 * [5. The accounts for testing on the SANDBOX](#5-The-accounts-for-testing-on-the-SANDBOX)
 
 ## **1. Sequence diagram**
@@ -24,11 +25,13 @@
 
 ## **2. Shortcut**
 
-Game shortcut call **VTCLauncher.exe** with parameter **ragnarok** instead for **Ragnarok.exe**.
+Game shortcut call **VTCLauncher.exe** with parameter **ragnarok** instead for **Ragnarok.exe**. 
 
 ```cmd
 VTCLauncher.exe ragnarok
 ```
+
+_Note: **VTCLauncher.exe** located in the same directory with **Ragnarok.exe**._
 
 ## **3. Call game**
 
@@ -44,13 +47,16 @@ Parameters:
 ## **4. Get detail VTC's account**
 
 ### **4.1. Environment**
+
 * SANDBOX: 
 	* HOST: http://apisdk1.vtcgame.vn
 	* CLIENT ID: **843daedbe694061c362eddd76200b9e0**
 * LIVE: 
 	* HOST: https://apisdk.vtcgame.vn
 	* CLIENT ID: **2aa32a67b771fcab4fd501273ef8b744**
+
 ### **4.2. Get account detail**
+
 * URL: sdk/account/detail
 * Method: GET
 * Params:
