@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>launcher</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="vtc-launcher-integrate">VTC Launcher integrate</h1>
+<h1 id="version-0.2">Version: 0.2</h1>
+
+<table>
+<thead>
+<tr>
+<th align="right">Version</th>
+<th>Update</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><strong>v0.2</strong></td>
+<td>- Shortcut call launcher with param <strong>ragnarok</strong></td>
+</tr>
+<tr>
+<td align="right"></td>
+<td>- Diagram add buy item flow.</td>
+</tr>
+<tr>
+<td align="right"></td>
+<td>- CLIENT ID of LIVE environment.</td>
+</tr>
+<tr>
+<td align="right"><strong>v0.1</strong></td>
+<td>Initialize document.</td>
+</tr>
+</tbody>
+</table><h2 id="sequence-diagram"><strong>1. Sequence diagram</strong></h2>
+<div class="mermaid"><svg xmlns="http://www.w3.org/2000/svg" id="mermaid-svg-BB0McWiKldJu2xOS" height="100%" width="100%" style="max-width:1250px;" viewBox="-150 -10 1250 910.5"><g></g><g><line id="actor1680" x1="75" y1="5" x2="75" y2="899.5" class="actor-line" stroke-width="0.5px" stroke="#999"></line><rect x="0" y="0" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="75" y="32.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle;"><tspan x="75" dy="0">User</tspan></text></g><g><line id="actor1681" x1="275" y1="5" x2="275" y2="899.5" class="actor-line" stroke-width="0.5px" stroke="#999"></line><rect x="200" y="0" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="275" y="32.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle;"><tspan x="275" dy="0">Shortcut</tspan></text></g><g><line id="actor1682" x1="475" y1="5" x2="475" y2="899.5" class="actor-line" stroke-width="0.5px" stroke="#999"></line><rect x="400" y="0" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="475" y="32.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle;"><tspan x="475" dy="0">VTCLauncher</tspan></text></g><g><line id="actor1683" x1="675" y1="5" x2="675" y2="899.5" class="actor-line" stroke-width="0.5px" stroke="#999"></line><rect x="600" y="0" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="675" y="32.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle;"><tspan x="675" dy="0">VTCServer</tspan></text></g><g><line id="actor1684" x1="875" y1="5" x2="875" y2="899.5" class="actor-line" stroke-width="0.5px" stroke="#999"></line><rect x="800" y="0" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="875" y="32.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle;"><tspan x="875" dy="0">Game</tspan></text></g><defs><marker id="arrowhead" refX="5" refY="2" markerWidth="6" markerHeight="4" orient="auto"><path d="M 0,0 V 4 L6,2 Z"></path></marker></defs><defs><marker id="crosshead" markerWidth="15" markerHeight="8" orient="auto" refX="16" refY="4"><path fill="black" stroke="#000000" stroke-width="1px" d="M 9,2 V 6 L16,4 Z" style="stroke-dasharray: 0px, 0px;"></path><path fill="none" stroke="#000000" stroke-width="1px" d="M 0,1 L 6,7 M 6,1 L 0,7" style="stroke-dasharray: 0px, 0px;"></path></marker></defs><g><text x="175" y="93" class="messageText" style="text-anchor: middle;">Click to play.</text><line x1="75" y1="100" x2="275" y2="100" class="messageLine0" stroke-width="2" stroke="black" marker-end="url(#arrowhead)" style="fill: none;"></line></g><g><rect x="270" y="102" fill="#f4f4f4" stroke="#666" width="10" height="96.625" rx="0" ry="0"></rect></g><g><rect x="-100" y="110" fill="#EDF2AE" stroke="#666" width="150" height="53.625" rx="0" ry="0" class="note"></rect><text x="-104" y="134" fill="black" class="noteText"><tspan x="-84" fill="black">User has </tspan></text><text x="-104" y="150.8125" fill="black" class="noteText"><tspan x="-84" fill="black">VTC's account.</tspan></text></g><g><text x="377.5" y="191.625" class="messageText" style="text-anchor: middle;">Call launcher.</text><line x1="280" y1="198.625" x2="475" y2="198.625" class="messageLine0" stroke-width="2" stroke="black" marker-end="url(#arrowhead)" style="fill: none;"></line></g><g><rect x="470" y="188.625" fill="#f4f4f4" stroke="#666" width="10" height="185" rx="0" ry="0"></rect></g><g><text x="272.5" y="226.625" class="messageText" style="text-anchor: middle;">Require login.</text><line x1="470" y1="233.625" x2="75" y2="233.625" class="messageLine1" stroke-width="2" stroke="black" marker-end="url(#arrowhead)" style="stroke-dasharray: 3px, 3px; fill: none;"></line></g><g><rect x="70" y="235.625" fill="#f4f4f4" stroke="#666" width="10" height="33" rx="0" ry="0"></rect></g><g><text x="275" y="261.625" class="messageText" style="text-anchor: middle;">Login.</text><line x1="80" y1="268.625" x2="470" y2="268.625" class="messageLine0" stroke-width="2" stroke="black" marker-end="url(#arrowhead)" style="fill: none;"></line></g><g><text x="577.5" y="296.625" class="messageText" style="text-anchor: middle;">Require authen user.</text><line x1="480" y1="303.625" x2="675" y2="303.625" class="messageLine0" stroke-width="2" stroke="black" marker-end="url(#arrowhead)" style="fill: none;"></line></g><g><rect x="670" y="305.625" fill="#f4f4f4" stroke="#666" width="10" height="473.875" rx="0" ry="0"></rect></g><g><rect x="675" y="305.625" fill="#f4f4f4" stroke="#666" width="10" height="33" rx="0" ry="0"></rect></g><g><text x="575" y="331.625" class="messageText" style="text-anchor: middle;">Return authen info.</text><line x1="670" y1="338.625" x2="480" y2="338.625" class="messageLine1" stroke-width="2" stroke="black" marker-end="url(#arrowhead)" style="stroke-dasharray: 3px, 3px; fill: none;"></line></g><g><text x="677.5" y="366.625" class="messageText" style="text-anchor: middle;">Call game</text><line x1="480" y1="373.625" x2="875" y2="373.625" class="messageLine0" stroke-width="2" stroke="black" marker-end="url(#arrowhead)" style="fill: none;"></line></g><g><rect x="870" y="375.625" fill="#f4f4f4" stroke="#666" width="10" height="438.875" rx="0" ry="0"></rect></g><g><text x="775" y="401.625" class="messageText" style="text-anchor: middle;">Get account info.</text><line x1="870" y1="408.625" x2="680" y2="408.625" class="messageLine0" stroke-width="2" stroke="black" marker-end="url(#arrowhead)" style="fill: none;"></line></g><g><rect x="675" y="410.625" fill="#f4f4f4" stroke="#666" width="10" height="33" rx="0" ry="0"></rect></g><g><text x="777.5" y="436.625" class="messageText" style="text-anchor: middle;">Return account info.</text><line x1="685" y1="443.625" x2="870" y2="443.625" class="messageLine1" stroke-width="2" stroke="black" marker-end="url(#arrowhead)" style="stroke-dasharray: 3px, 3px; fill: none;"></line></g><g><rect x="900" y="453.625" fill="#EDF2AE" stroke="#666" width="150" height="70.4375" rx="0" ry="0" class="note"></rect><text x="896" y="477.625" fill="black" class="noteText"><tspan x="916" fill="black">Game verify </tspan></text><text x="896" y="494.4375" fill="black" class="noteText"><tspan x="916" fill="black">accesstoken before </tspan></text><text x="896" y="511.25" fill="black" class="noteText"><tspan x="916" fill="black">allow user play game.</tspan></text></g><g><text x="472.5" y="552.0625" class="messageText" style="text-anchor: middle;">Allow user play game.</text><line x1="870" y1="559.0625" x2="75" y2="559.0625" class="messageLine1" stroke-width="2" stroke="black" marker-end="url(#arrowhead)" style="stroke-dasharray: 3px, 3px; fill: none;"></line></g><g><rect x="70" y="561.0625" fill="#f4f4f4" stroke="#666" width="10" height="33" rx="0" ry="0"></rect></g><g><text x="475" y="587.0625" class="messageText" style="text-anchor: middle;">Play game.</text><line x1="80" y1="594.0625" x2="870" y2="594.0625" class="messageLine0" stroke-width="2" stroke="black" marker-end="url(#arrowhead)" style="fill: none;"></line></g><g><text x="472.5" y="622.0625" class="messageText" style="text-anchor: middle;">Buy item.</text><line x1="75" y1="629.0625" x2="870" y2="629.0625" class="messageLine0" stroke-width="2" stroke="black" marker-end="url(#arrowhead)" style="fill: none;"></line></g><g><rect x="875" y="631.0625" fill="#f4f4f4" stroke="#666" width="10" height="183.4375" rx="0" ry="0"></rect></g><g><text x="775" y="657.0625" class="messageText" style="text-anchor: middle;">Call wap payment.</text><line x1="870" y1="664.0625" x2="680" y2="664.0625" class="messageLine0" stroke-width="2" stroke="black" marker-end="url(#arrowhead)" style="fill: none;"></line></g><g><rect x="675" y="666.0625" fill="#f4f4f4" stroke="#666" width="10" height="113.4375" rx="0" ry="0"></rect></g><g><rect x="900" y="674.0625" fill="#EDF2AE" stroke="#666" width="150" height="70.4375" rx="0" ry="0" class="note"></rect><text x="896" y="698.0625" fill="black" class="noteText"><tspan x="916" fill="black">Game call wap view </tspan></text><text x="896" y="714.875" fill="black" class="noteText"><tspan x="916" fill="black">with billing </tspan></text><text x="896" y="731.6875" fill="black" class="noteText"><tspan x="916" fill="black">accesstoken .</tspan></text></g><g><text x="777.5" y="772.5" class="messageText" style="text-anchor: middle;">Show payment UI.</text><line x1="685" y1="779.5" x2="870" y2="779.5" class="messageLine1" stroke-width="2" stroke="black" marker-end="url(#arrowhead)" style="stroke-dasharray: 3px, 3px; fill: none;"></line></g><g><text x="472.5" y="807.5" class="messageText" style="text-anchor: middle;">require payment.</text><line x1="870" y1="814.5" x2="75" y2="814.5" class="messageLine1" stroke-width="2" stroke="black" marker-end="url(#arrowhead)" style="stroke-dasharray: 3px, 3px; fill: none;"></line></g><g><rect x="0" y="834.5" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="75" y="867" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle;"><tspan x="75" dy="0">User</tspan></text></g><g><rect x="200" y="834.5" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="275" y="867" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle;"><tspan x="275" dy="0">Shortcut</tspan></text></g><g><rect x="400" y="834.5" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="475" y="867" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle;"><tspan x="475" dy="0">VTCLauncher</tspan></text></g><g><rect x="600" y="834.5" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="675" y="867" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle;"><tspan x="675" dy="0">VTCServer</tspan></text></g><g><rect x="800" y="834.5" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="875" y="867" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle;"><tspan x="875" dy="0">Game</tspan></text></g></svg></div>
+<h2 id="shortcut"><strong>2. Shortcut</strong></h2>
+<p>Game shortcut call <strong>VTCLauncher.exe</strong> with parameter <strong>ragnarok</strong> instead for <strong>Ragnarok.exe</strong>.</p>
+<pre class=" language-cmd"><code class="prism  language-cmd">VTCLauncher.exe ragnarok
+</code></pre>
+<h2 id="call-game"><strong>3. Call game</strong></h2>
+<p>VTC Launcher call the game by the command line as below:</p>
+<pre class=" language-cmd"><code class="prism  language-cmd">Ragnarok.exe User=&lt;Username&gt; Token=&lt;AccessToken&gt; BToken=&lt;BillingAccessToken&gt;
+</code></pre>
+<p>Parameters:</p>
+<ol>
+<li><strong>User</strong>: Username.</li>
+<li><strong>Token</strong>: Access token to get user information.</li>
+<li><strong>BToken</strong>: Billing accesss token to do payment in the game.</li>
+</ol>
+<h2 id="get-detail-vtcs-account"><strong>4. Get detail VTC’s account</strong></h2>
+<h3 id="environment"><strong>4.1. Environment</strong></h3>
+<ul>
+<li>SANDBOX:
+<ul>
+<li>HOST: <a href="http://apisdk1.vtcgame.vn">http://apisdk1.vtcgame.vn</a></li>
+<li>CLIENT ID: <strong>843daedbe694061c362eddd76200b9e0</strong></li>
+</ul>
+</li>
+<li>LIVE:
+<ul>
+<li>HOST: <a href="https://apisdk.vtcgame.vn">https://apisdk.vtcgame.vn</a></li>
+<li>CLIENT ID: <strong>2aa32a67b771fcab4fd501273ef8b744</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="get-account-detail"><strong>4.2. Get account detail</strong></h3>
+<ul>
+<li>URL: sdk/account/detail</li>
+<li>Method: GET</li>
+<li>Params:
+<ul>
+<li>client_id: CLIENT ID</li>
+<li>access_token: <strong>Token</strong></li>
+<li>username: <strong>User</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="example"><strong>4.3. Example</strong></h3>
+<ul>
+<li>
+<p>SANDBOX:</p>
+<pre class=" language-http"><code class="prism  language-http"><span class="token header-name keyword">http:</span>//apisdk1.vtcgame.vn/sdk/account/detail?client_id=843daedbe694061c362eddd76200b9e0&amp;access_token=a4596aed-a6ff-4b69-a12e-25704c9c256e&amp;username=vtctest01
+</code></pre>
+</li>
+<li>
+<p>LIVE:</p>
+<pre class=" language-http"><code class="prism  language-http"><span class="token header-name keyword">https:</span>//apisdk.vtcgame.vn/sdk/account/detail?client_id=2aa32a67b771fcab4fd501273ef8b744&amp;access_token=3ff10246-1bdd-4d77-a300-ab63a659474b&amp;username=zorroxtm
+</code></pre>
+</li>
+<li>
+<p>Result:</p>
+<pre><code>{
+	"error": 200,
+	"message": "Success",
+	"info": {
+		"id": "117813683",
+		"userName": "vtctest01",
+		"password": "",
+		"fullName": "vtctest01",
+		"email": "Quytn@vtc.vn",
+		"birthday": 1177977600000,
+		"locationId": 24,
+		"userPassport": "",
+		"userStatus": 1,
+		"mobile": "",
+		"gender": 0,
+		"address": "",
+		"vcoinGame": 0,
+		"vcoinPayment": 112406,
+		"paygateId": 0,
+		"timeStored": null,
+		"billingAccessToken": null,
+		"gameClientIds": null
+	}
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="wap-payment"><strong>4.4. Wap payment</strong></h3>
+<h2 id="the-accounts-for-testing-on-the-sandbox"><strong>5. The accounts for testing on the SANDBOX</strong></h2>
+<ul>
+<li>accounts: vtctest01 -&gt; vtctest99</li>
+<li>password: 123456</li>
+</ul>
+<p><em>Note: <strong>vtctest10</strong> account has <strong>OTP</strong> default is 123456</em></p>
+</div>
+</body>
+
+</html>
