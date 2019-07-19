@@ -31,6 +31,9 @@ Game shortcut call **VTCLauncher.exe** with parameter **ragnarok** instead for *
 VTCLauncher.exe ragnarok
 ```
 
+* [VTCLauncher SANDBOX](./launcher/sandbox/VTCLauncher.zip)
+* [VTCLauncher LIVE](./launcher/live/VTCLauncher.zip)
+
 _Note: **VTCLauncher.exe** located in the same directory with **Ragnarok.exe**._
 
 ## **3. Call game**
