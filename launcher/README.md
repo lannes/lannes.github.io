@@ -32,8 +32,8 @@ Game shortcut call **VTCLauncher.exe** with parameter **ragnarok** instead for *
 VTCLauncher.exe ragnarok
 ```
 
-* [VTCLauncher SANDBOX](./launcher/sandbox/VTCLauncher.zip)
-* [VTCLauncher LIVE](./launcher/live/VTCLauncher.zip)
+* [VTCLauncher SANDBOX](./sandbox/VTCLauncher.zip)
+* [VTCLauncher LIVE](./live/VTCLauncher.zip)
 
 _Note: **VTCLauncher.exe** located in the same directory with **Ragnarok.exe**._
 
@@ -44,9 +44,9 @@ VTC Launcher call the game by the command line as below:
 Ragnarok.exe User=<Username> Token=<AccessToken> BToken=<BillingAccessToken>
 ```
 Parameters:  
-1.  **User**: Username.
-2.  **Token**: Access token to get user information.
-3.  **BToken**: Billing accesss token to do payment in the game.
+* **User**: Username.
+* **Token**: Access token to get user information.
+* **BToken**: Billing accesss token to do payment in the game.
 
 ## **4. Get detail VTC's account**
 
