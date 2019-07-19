@@ -3,11 +3,12 @@
 ## **Version: 0.2**
 ## **Update History**:
 
-| Version   | Update                                                   | Date        |
-|----------:|----------------------------------------------------------|-------------|
-| **v0.2**  | - Diagram add buy item flow.                             | 19-07-2019  |
-|           | - CLIENT ID of LIVE environment.                         |             |
-| **v0.1**  | Initialize document.                                     | 17-07-2019  |
+| Version   | Update                                                      | Date        |
+|----------:|-------------------------------------------------------------|-------------|
+| **v0.2**  | - Shortcut call **VTCLauncher.exe** with param **ragnarok** | 19-07-2019  |
+|           | - Diagram add buy item flow.                                |             |
+|           | - CLIENT ID of LIVE environment.                            |             |
+| **v0.1**  | Initialize document.                                        | 17-07-2019  |
 
 ## **Table of contents**
 * [1. Sequence diagram](#1-Sequence-diagram)
