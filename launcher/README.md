@@ -1,10 +1,14 @@
 # **VTC Launcher integrate**
 
-## **Version: 0.2**
+## **Version: 0.3**
 ## **Update History**:
 
 | Version   | Update                                                      | Date        |
 |----------:|-------------------------------------------------------------|-------------|
+| **v0.3**  | - Add size of parameters.                                   | 30-07-2019  |
+|           | - Add the meaning of the CLIENT ID.                         |             |
+|           | - Add size of user id.                                      |             |
+|           | - Add error code table.                                     |             |
 | **v0.2**  | - Shortcut call **VTCLauncher.exe** with param **ragnarok** | 19-07-2019  |
 |           | - Diagram add buy item flow.                                |             |
 |           | - CLIENT ID of LIVE environment.                            |             |
@@ -44,9 +48,9 @@ VTC Launcher call the game by the command line as below:
 Ragnarok.exe User=<Username> Token=<AccessToken> BToken=<BillingAccessToken>
 ```
 Parameters:  
-* **User**: Username.
-* **Token**: Access token to get user information.
-* **BToken**: Billing accesss token to do payment in the game.
+* **User**: Username (max: 30 bytes)
+* **Token**: Access token to get user information (max: 52 bytes).
+* **BToken**: Billing accesss token to do payment in the game (max: 100 bytes).
 
 ## **4. Get detail VTC's account**
 
@@ -58,6 +62,8 @@ Parameters:
 * LIVE: 
 	* HOST: https://apisdk.vtcgame.vn
 	* CLIENT ID: **2aa32a67b771fcab4fd501273ef8b744**
+
+CLIENT ID: application identifer when connect to VTC system.
 
 ### **4.2. Get account detail**
 
@@ -103,6 +109,16 @@ Parameters:
 		}
 	}
 	```
+
+_Note:_
+* Type of id is BIGINT, it have size is 8 bytes (range: from 1 to 2^63 -1)
+* error: 
+
+	| error | message                                            | description                                 |
+	|------:|----------------------------------------------------|---------------------------------------------|
+	| 200   | Success                                            | Success                                     |
+	| -303  | Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại | The session has expired. Please login again |
+	| -304  | Kết nối không ổn định. Xin vui lòng thử lại!!!     | Unstable connection. Please try again!!!    |
 
 ### **4.3. Wap payment**
 
