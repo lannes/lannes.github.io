@@ -6,5 +6,5 @@
 * [README](./launcher/README.md)
 
 ## **Download**
-* [SANDBOX](./launcher/sandbox/VTCLauncher.zip)
+* [SANDBOX](./launcher/sandbox/Sandbox.zip)
 * [LIVE](./launcher/live/VTCLauncher.zip)
