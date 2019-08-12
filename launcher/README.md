@@ -1,18 +1,21 @@
 # **VTC Launcher integrate**
 
-## **Version: 0.3**
+## **Version: 1.0**
 ## **Update History**:
 
-| Version   | Update                                                      | Date        |
-|----------:|-------------------------------------------------------------|-------------|
-| **v0.3**  | - Add size of parameters.                                   | 30-07-2019  |
-|           | - Add the meaning of the CLIENT ID.                         |             |
-|           | - Add size of user id.                                      |             |
-|           | - Add error code table.                                     |             |
-| **v0.2**  | - Shortcut call **VTCLauncher.exe** with param **ragnarok** | 19-07-2019  |
-|           | - Diagram add buy item flow.                                |             |
-|           | - CLIENT ID of LIVE environment.                            |             |
-| **v0.1**  | Initialize document.                                        | 17-07-2019  |
+| Version   | Update                                                                  | Date        |
+|----------:|-------------------------------------------------------------------------|-------------|
+| **v1.0**  | - The game shortcut call **VTCGame.exe** instead of **VTCLauncher.exe** | 12-08-2019  |
+|           | without parameters.                                                     |             |
+|           | - Change sequence diagram.                                              |             |
+| **v0.3**  | - Add size of parameters.                                               | 30-07-2019  |
+|           | - Add the meaning of the CLIENT ID.                                     |             |
+|           | - Add size of user id.                                                  |             |
+|           | - Add error code table.                                                 |             |
+| **v0.2**  | - The shortcut call **VTCLauncher.exe** with param **Game**             | 19-07-2019  |
+|           | - Diagram add buy item flow.                                            |             |
+|           | - CLIENT ID of LIVE environment.                                        |             |
+| **v0.1**  | Initialize document.                                                    | 17-07-2019  |
 
 ## **Table of contents**
 * [1. Sequence diagram](#1-Sequence-diagram)
@@ -30,23 +33,34 @@
 
 ## **2. Shortcut**
 
-Game shortcut call **VTCLauncher.exe** with parameter **ragnarok** instead for **Ragnarok.exe**. 
+The game shortcut call **VTCGame.exe**. 
 
-```cmd
-VTCLauncher.exe ragnarok
+**VTCGame.exe** and **Launcher** folder located in the same directory with **Game.exe**. 
+
+Folder Structure:
+
+```
+    game-folder
+    |-- + Launcher
+    |   | -- VTCLauncher.exe
+    |   | -- config.ini (the configuration file for sandbox mode)
+    |   | -- ...
+    |-- VTCGame.exe
+    |-- Game.exe
 ```
 
-* [VTCLauncher SANDBOX](./sandbox/VTCLauncher.zip)
-* [VTCLauncher LIVE](./live/VTCLauncher.zip)
+* [VTCLauncher SANDBOX](./sandbox/Sandbox.zip)
+* [VTCLauncher LIVE](./live/Live.zip)
 
-_Note: **VTCLauncher.exe** located in the same directory with **Ragnarok.exe**._
+_Note: **Game.exe** at here is file execute of the game, example Ragnarok.exe, NewGunbound.exe, ... ._
 
 ## **3. Call game**
 
 VTC Launcher call the game by the command line as below:
 ```cmd
-Ragnarok.exe User=<Username> Token=<AccessToken> BToken=<BillingAccessToken>
+Game.exe User=<Username> Token=<AccessToken> BToken=<BillingAccessToken>
 ```
+
 Parameters:  
 * **User**: Username (max: 30 bytes)
 * **Token**: Access token to get user information (max: 52 bytes).
@@ -58,10 +72,10 @@ Parameters:
 
 * SANDBOX: 
 	* HOST: http://apisdk1.vtcgame.vn
-	* CLIENT ID: **843daedbe694061c362eddd76200b9e0**
+	* CLIENT ID: There is different value for each game.  
 * LIVE: 
 	* HOST: https://apisdk.vtcgame.vn
-	* CLIENT ID: **2aa32a67b771fcab4fd501273ef8b744**
+	* CLIENT ID: There is different value for each game.
 
 CLIENT ID: application identifer when connect to VTC system.
 
@@ -76,11 +90,11 @@ CLIENT ID: application identifer when connect to VTC system.
 * Example:
 	* SANDBOX:
 		```http
-		http://apisdk1.vtcgame.vn/sdk/account/detail?client_id=843daedbe694061c362eddd76200b9e0&access_token=a4596aed-a6ff-4b69-a12e-25704c9c256e&username=vtctest01
+		http://apisdk1.vtcgame.vn/sdk/account/detail?client_id=<CLIENT ID>&access_token=a4596aed-a6ff-4b69-a12e-25704c9c256e&username=vtctest01
 		```
 	* LIVE:
 		```http
-		https://apisdk.vtcgame.vn/sdk/account/detail?client_id=2aa32a67b771fcab4fd501273ef8b744&access_token=3ff10246-1bdd-4d77-a300-ab63a659474b&username=zorroxtm
+		https://apisdk.vtcgame.vn/sdk/account/detail?client_id=<CLIENT ID>&access_token=3ff10246-1bdd-4d77-a300-ab63a659474b&username=zorroxtm
 		```
 * Result:
 	```
