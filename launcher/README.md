@@ -3,28 +3,27 @@
 ## **Version: 1.0**
 ## **Update History**:
 
-| Version   | Update                                                                  | Date        |
-|----------:|-------------------------------------------------------------------------|-------------|
-| **v1.0**  | - The game shortcut call **VTCGame.exe** instead of **VTCLauncher.exe** | 12-08-2019  |
-|           | without parameters.                                                     |             |
-|           | - Change sequence diagram.                                              |             |
-| **v0.3**  | - Add size of parameters.                                               | 30-07-2019  |
-|           | - Add the meaning of the CLIENT ID.                                     |             |
-|           | - Add size of user id.                                                  |             |
-|           | - Add error code table.                                                 |             |
-| **v0.2**  | - The shortcut call **VTCLauncher.exe** with param **Game**             | 19-07-2019  |
-|           | - Diagram add buy item flow.                                            |             |
-|           | - CLIENT ID of LIVE environment.                                        |             |
-| **v0.1**  | Initialize document.                                                    | 17-07-2019  |
+| Version   | Update                                                              | Date        |
+|----------:|---------------------------------------------------------------------|-------------|
+| **v1.0**  | - The game shortcut call `VTCGame.exe` instead of `VTCLauncher.exe` | 12-08-2019  |
+|           | without parameters.                                                 |             |
+|           | - Change sequence diagram.                                          |             |
+| **v0.3**  | - Add size of parameters.                                           | 30-07-2019  |
+|           | - Add the meaning of the `CLIENT ID`                                |             |
+|           | - Add size of user id.                                              |             |
+|           | - Add error code table.                                             |             |
+| **v0.2**  | - The shortcut call `VTCLauncher.exe` with param `Game`             | 19-07-2019  |
+|           | - Diagram add buy item flow.                                        |             |
+|           | - `CLIENT ID` of LIVE environment.                                  |             |
+| **v0.1**  | Initialize document.                                                | 17-07-2019  |
 
 ## **Table of contents**
 * [1. Sequence diagram](#1-Sequence-diagram)
 * [2. Folder Structure](#2-Folder-Structure)
 * [3. Call game](#3-Call-game)
-* [4. Get detail VTC's account](#4-Get-detail-VTC's-account)
+* [4. Get account detail](#4-Get-account-detail)
 	* [4.1. Environment](#41-Environment)
 	* [4.2. Get account detail](#42-Get-account-detail)
-	* [4.3. Wap payment](#43-Wap-payment)
 * [5. The accounts for testing on the SANDBOX](#5-The-accounts-for-testing-on-the-SANDBOX)
 
 ## **1. Sequence diagram**
@@ -33,7 +32,7 @@
 
 ## **2. Folder Structure**
 
-**VTCGame.exe** and **Launcher** folder located in the same where with **Game.exe**. 
+`VTCGame.exe` and `Launcher` folder located in the same where with `Game.exe`. At here, `Game.exe` is execute file of the game, e.g `Ragnarok.exe`, `NewGunbound.exe`, ...
 
 Folder Structure:
 
@@ -47,48 +46,45 @@ Folder Structure:
     |-- Game.exe
 ```
 
-* SANDBOX mode
+* SANDBOX environment
 	* [Download file](./sandbox/Sandbox.zip)
-* LIVE mode
-	* Beta testing can do by setting `Sandbox` parameter in the `config.ini` file equals 0.
-
-Note: 
-* _`Game.exe` at here is execute file of the game, example `Ragnarok.exe`, `NewGunbound.exe`, ... ._
-* _The game installer for public version must don't include `config.ini` file, because it will prevent update mechanism of Launcher._
+* LIVE environment
+	* Beta testing can do by set `Sandbox` parameter in the `config.ini` file equals `0`.
+	* The game installer for public version must don't include `config.ini` file, because it will prevent update mechanism of Launcher.
 
 ## **3. Call game**
 
-VTC Launcher call the game by the command line as below:
+`VTCLauncher` call the game by the command line as below:
 ```cmd
 Game.exe User=<Username> Token=<AccessToken> BToken=<BillingAccessToken>
 ```
 
 Parameters:  
-* **User**: Username (max: 30 bytes)
-* **Token**: Access token to get user information (max: 52 bytes).
-* **BToken**: Billing accesss token to do payment in the game (max: 100 bytes).
+* `User`: Username (max: 30 bytes)
+* `Token`: Access token to get user information (max: 52 bytes).
+* `BToken`: Billing accesss token to do payment in the game (max: 100 bytes).
 
-## **4. Get detail VTC's account**
+## **4. Get account detail**
 
 ### **4.1. Environment**
 
 * SANDBOX: 
-	* HOST: http://apisdk1.vtcgame.vn
-	* CLIENT ID: There is different value for each game.  
+	* `HOST`: http://apisdk1.vtcgame.vn
+	* `CLIENT ID`: There is different value for each game.  
 * LIVE: 
-	* HOST: https://apisdk.vtcgame.vn
-	* CLIENT ID: There is different value for each game.
+	* `HOST`: https://apisdk.vtcgame.vn
+	* `CLIENT ID`: There is different value for each game.
 
-CLIENT ID: application identifer when connect to VTC system.
+`CLIENT ID`: application identifer when connect to VTC system.
 
 ### **4.2. Get account detail**
 
 * URL: sdk/account/detail
 * Method: GET
 * Params:
-	- client_id: CLIENT ID
-	- access_token: **Token**
-	- username: **User**
+	- client_id: `CLIENT ID`
+	- access_token: `Token`
+	- username: `User`
 * Example:
 	* SANDBOX:
 		```http
@@ -127,19 +123,14 @@ CLIENT ID: application identifer when connect to VTC system.
 	```
 
 _Note:_
-* Type of id is BIGINT, it have size is 8 bytes (range: from 1 to 2^63 -1)
-* error: 
+* _Type of `id` is BIGINT, it have size is 8 bytes (range: from 1 to 2^63 -1)_
+* _Errors:_
 
-	| error | message                                            | description                                 |
+	| `error` | `message`                                        | description                                 |
 	|------:|----------------------------------------------------|---------------------------------------------|
 	| 200   | Success                                            | Success                                     |
 	| -303  | Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại | The session has expired. Please login again |
 	| -304  | Kết nối không ổn định. Xin vui lòng thử lại!!!     | Unstable connection. Please try again!!!    |
-
-### **4.3. Wap payment**
-
-* SANDBOX:
-* LIVE:
 
 ## **5. The accounts for testing on the SANDBOX**
 
