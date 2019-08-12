@@ -1,4 +1,4 @@
-# **VTC Launcher integrate**
+# **VTC Launcher Integration**
 
 ## **Version: 1.0**
 ## **Update History**:
@@ -8,11 +8,12 @@
 | **v1.0**  | - The game shortcut call `VTCGame.exe` instead of `VTCLauncher.exe` | 12-08-2019  |
 |           | without parameters.                                                 |             |
 |           | - Change sequence diagram.                                          |             |
+|           | - Add explain `vcoinGame`.                                          |             |
 | **v0.3**  | - Add size of parameters.                                           | 30-07-2019  |
-|           | - Add the meaning of the `CLIENT ID`                                |             |
+|           | - Add the meaning of the `CLIENT ID`.                               |             |
 |           | - Add size of user id.                                              |             |
 |           | - Add error code table.                                             |             |
-| **v0.2**  | - The shortcut call `VTCLauncher.exe` with param `Game`             | 19-07-2019  |
+| **v0.2**  | - The shortcut call `VTCLauncher.exe` with param `Game`.            | 19-07-2019  |
 |           | - Diagram add buy item flow.                                        |             |
 |           | - `CLIENT ID` of LIVE environment.                                  |             |
 | **v0.1**  | Initialize document.                                                | 17-07-2019  |
@@ -40,7 +41,7 @@ Folder Structure:
     game-folder
     |-- + Launcher
     |   | -- VTCLauncher.exe
-    |   | -- config.ini (the configuration file for sandbox mode)
+    |   | -- config.ini (The configuration file for sandbox environment.)
     |   | -- ...
     |-- VTCGame.exe
     |-- Game.exe
@@ -75,7 +76,7 @@ Parameters:
 	* `HOST`: https://apisdk.vtcgame.vn
 	* `CLIENT ID`: There is different value for each game.
 
-`CLIENT ID`: application identifer when connect to VTC system.
+`CLIENT ID`: application identifier when connect to VTC system.
 
 ### **4.2. Get account detail**
 
@@ -123,7 +124,8 @@ Parameters:
 	```
 
 _Note:_
-* _Type of `id` is BIGINT, it have size is 8 bytes (range: from 1 to 2^63 -1)_
+* _`id`: user identifier. Type of `id` is BIGINT, it have size is 8 bytes (range: from 1 to 2^63 -1)._
+* _`vcoinGame`: coin balance in the game._
 * _Errors:_
 
 	| `error` | `message`                                        | description                                 |
