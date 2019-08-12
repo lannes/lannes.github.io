@@ -19,7 +19,7 @@
 
 ## **Table of contents**
 * [1. Sequence diagram](#1-Sequence-diagram)
-* [2. Shortcut](#2-Shortcut)
+* [2. Folder Structure](#2-Folder-Structure)
 * [3. Call game](#3-Call-game)
 * [4. Get detail VTC's account](#4-Get-detail-VTC's-account)
 	* [4.1. Environment](#41-Environment)
@@ -31,11 +31,9 @@
 
 ![](./sequence-diagram.svg)
 
-## **2. Shortcut**
+## **2. Folder Structure**
 
-The game shortcut call **VTCGame.exe**. 
-
-**VTCGame.exe** and **Launcher** folder located in the same directory with **Game.exe**. 
+**VTCGame.exe** and **Launcher** folder located in the same where with **Game.exe**. 
 
 Folder Structure:
 
@@ -49,10 +47,14 @@ Folder Structure:
     |-- Game.exe
 ```
 
-* [VTCLauncher SANDBOX](./sandbox/Sandbox.zip)
-* [VTCLauncher LIVE](./live/Live.zip)
+* SANDBOX mode
+	* [Download file](./sandbox/Sandbox.zip)
+* LIVE mode
+	* Beta testing can do by setting `Sandbox` parameter in the `config.ini` file equals 0.
 
-_Note: **Game.exe** at here is file execute of the game, example Ragnarok.exe, NewGunbound.exe, ... ._
+Note: 
+* _`Game.exe` at here is execute file of the game, example `Ragnarok.exe`, `NewGunbound.exe`, ... ._
+* _The game installer for public version must don't include `config.ini` file, because it will prevent update mechanism of Launcher._
 
 ## **3. Call game**
 
