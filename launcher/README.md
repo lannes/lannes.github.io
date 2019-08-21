@@ -1,22 +1,24 @@
 # **VTC Launcher Integration**
 
-## **Version: 1.0**
+## **Version: 1.1**
 ## **Update History**:
 
-| Version   | Update                                                              | Date        |
-|----------:|---------------------------------------------------------------------|-------------|
-| **v1.0**  | - The game shortcut call `VTCGame.exe` instead of `VTCLauncher.exe` | 12-08-2019  |
-|           | without parameters.                                                 |             |
-|           | - Change sequence diagram.                                          |             |
-|           | - Add explain `vcoinGame`.                                          |             |
-| **v0.3**  | - Add size of parameters.                                           | 30-07-2019  |
-|           | - Add the meaning of the `CLIENT ID`.                               |             |
-|           | - Add size of user id.                                              |             |
-|           | - Add error code table.                                             |             |
-| **v0.2**  | - The shortcut call `VTCLauncher.exe` with param `Game`.            | 19-07-2019  |
-|           | - Diagram add buy item flow.                                        |             |
-|           | - `CLIENT ID` of LIVE environment.                                  |             |
-| **v0.1**  | Initialize document.                                                | 17-07-2019  |
+| Version   | Update                                                                      | Date        |
+|----------:|-----------------------------------------------------------------------------|-------------|
+| **v1.1**  | - Remove `vcoinGame` in the result call `detail` api and use `vcoinPayment` | 21-08-2019  |
+|           | instead of `vcoinGame`.                                                     |             |
+| **v1.0**  | - The game shortcut call `VTCGame.exe` instead of `VTCLauncher.exe`         | 12-08-2019  |
+|           | without parameters.                                                         |             |
+|           | - Change sequence diagram.                                                  |             |
+|           | - Add explain `vcoinGame`.                                                  |             |
+| **v0.3**  | - Add size of parameters.                                                   | 30-07-2019  |
+|           | - Add the meaning of the `CLIENT ID`.                                       |             |
+|           | - Add size of user id.                                                      |             |
+|           | - Add error code table.                                                     |             |
+| **v0.2**  | - The shortcut call `VTCLauncher.exe` with param `Game`.                    | 19-07-2019  |
+|           | - Diagram add buy item flow.                                                |             |
+|           | - `CLIENT ID` of LIVE environment.                                          |             |
+| **v0.1**  | Initialize document.                                                        | 17-07-2019  |
 
 ## **Table of contents**
 * [1. Sequence diagram](#1-Sequence-diagram)
@@ -50,7 +52,7 @@ Folder Structure:
 * SANDBOX environment
 	* [Download file](./sandbox/Sandbox.zip)
 * LIVE environment
-	* Beta testing can do by set `Sandbox` parameter in the `config.ini` file equals `0`.
+	* Beta testing can do by set `Sandbox` property in the `config.ini` file equals `0`.
 	* The game installer for public version must don't include `config.ini` file, because it will prevent update mechanism of Launcher.
 
 ## **3. Call game**
@@ -99,13 +101,13 @@ Parameters:
 	```
 	{
 		"error": 200,
-		"message": "Success",
+		"message": "success",
 		"info": {
 			"id": "117813683",
-			"userName": "vtctest01",
+			"username": "vtctest01",
 			"password": "",
-			"fullName": "vtctest01",
-			"email": "Quytn@vtc.vn",
+			"fullname": "vtctest01",
+			"email": "quytn@vtc.vn",
 			"birthday": 1177977600000,
 			"locationId": 24,
 			"userPassport": "",
@@ -113,8 +115,7 @@ Parameters:
 			"mobile": "",
 			"gender": 0,
 			"address": "",
-			"vcoinGame": 0,
-			"vcoinPayment": 112406,
+			"vcoinPayment": 103913,
 			"paygateId": 0,
 			"timeStored": null,
 			"billingAccessToken": null,
@@ -125,7 +126,7 @@ Parameters:
 
 _Note:_
 * _`id`: user identifier. Type of `id` is BIGINT, it have size is 8 bytes (range: from 1 to 2^63 -1)._
-* _`vcoinGame`: coin balance in the game._
+* _`vcoinPayment`: coin balance in the game._
 * _Errors:_
 
 	| `error` | `message`                                        | description                                 |
