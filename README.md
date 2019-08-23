@@ -7,4 +7,3 @@
 
 ## **Download**
 * [SANDBOX](./launcher/sandbox/Sandbox.zip)
-* [LIVE](./launcher/live/VTCLauncher.zip)
